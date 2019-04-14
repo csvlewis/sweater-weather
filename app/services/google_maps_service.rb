@@ -1,6 +1,6 @@
 class GoogleMapsService
   def geocode(location)
-    get_json("geocode/json?address=#{location}&key=#{ENV['GOOGLE_PLACES_API_KEY']}")
+    get_json("geocode/json?address=#{location}&key=#{ENV['GOOGLE_MAPS_API_KEY']}")
   end
 
   def get_json(url)
