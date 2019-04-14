@@ -1,12 +1,15 @@
 class Api::V1::ForecastController < ApplicationController
   def show
-    response = location_service.geocode(params[:location])
-    lat = response[:results][0][:geometry][:location][:lat]
-    lng = response[:results][0][:geometry][:location][:lng]
-    render json: weather_service.forecast(lat, lng)
+    lat_long = geocode_location(params[:location])
+    render json: weather_service.forecast(lat_long[:lat], lat_long[:lng])
   end
 
   private
+
+  def geocode_location(location)
+    response = location_service.geocode(location)
+    response[:results][0][:geometry][:location]
+  end
 
   def location_service
     GoogleMapsService.new
