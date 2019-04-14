@@ -3,7 +3,7 @@ class Api::V1::ForecastController < ApplicationController
     response = location_service.geocode(params[:location])
     lat = response[:results][0][:geometry][:location][:lat]
     lng = response[:results][0][:geometry][:location][:lng]
-    weather_service.forecast(lat, lng)
+    render json: weather_service.forecast(lat, lng)
   end
 
   private
