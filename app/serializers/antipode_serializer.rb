@@ -1,8 +1,6 @@
 class AntipodeSerializer
   include FastJsonapi::ObjectSerializer
-  attribute :location_name do |antipode|
-    antipode.antipode_city
-  end
+  attribute :location_name, &:antipode_city
   attribute :forecast do |antipode|
     {
       summary: antipode.forecast_summary,
