@@ -14,6 +14,6 @@ describe 'Antipode API' do
     expect(parsed[:data][:attributes][:location_name]).to eq("Jujuy")
     expect(parsed[:data][:attributes][:forecast][:summary]).to be_a(String)
     expect(parsed[:data][:attributes][:forecast][:current_temperature]).to be_a(Integer)
-    expect(parsed[:data][:attributes][:search_location]).to eq("Mong Kok")
+    expect(parsed[:data][:attributes][:search_location]).to eq("Kowloon")
   end
 end
