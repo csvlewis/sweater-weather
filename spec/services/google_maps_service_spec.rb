@@ -25,9 +25,7 @@ describe GoogleMapsService do
 
         response = service.reverse_geocode(-22.3193039, -65.8306389)
 
-        binding.pry
-        expect(response).to be_a(Float)
-
+        expect(response[:results][1][:address_components][0][:long_name]).to eq("Jujuy")
       end
     end
   end
