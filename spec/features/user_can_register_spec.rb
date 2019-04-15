@@ -13,6 +13,7 @@ describe 'User Registration' do
         click_button 'Create User'
 
         expect(current_path).to eq('/')
+        expect(pate).to have_content('You have created an account!')
         expect(User.all.count).to eq(1)
         expect(User.first.email).to eq('whatever@example.com')
       end
