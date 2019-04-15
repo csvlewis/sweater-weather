@@ -9,10 +9,11 @@ describe 'Antipode API' do
     parsed = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-    expect(parsed[:data][0][:id]).to eq(1)
-    expect(parsed[:data][0][:search_location]).to eq("Hong Kong")
-    expect(parsed[:data][0][:attributes][:forecast][:summary]).to be_a(String)
-    expect(parsed[:data][0][:attributes][:forecast][:current_temperature]).to be_a(Integer)
-    expect(parsed[:data][0][:attributes][:location_name]).to eq("Antipode City Name")
+    expect(parsed[:data][:id]).to eq("1")
+    expect(parsed[:data][:type]).to eq("antipode")
+    expect(parsed[:data][:attributes][:location_name]).to eq("Jujuy")
+    expect(parsed[:data][:attributes][:forecast][:summary]).to be_a(String)
+    expect(parsed[:data][:attributes][:forecast][:current_temperature]).to be_a(Integer)
+    expect(parsed[:data][:attributes][:search_location]).to eq("Mong Kok")
   end
 end
