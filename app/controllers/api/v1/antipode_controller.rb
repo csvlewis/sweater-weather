@@ -1,12 +1,18 @@
 class Api::V1::AntipodeController < ApplicationController
   def show
     lat_long = geocode(params[:loc])
-    antipode = antipode_service.antipode(lat_long[:lat], lat_long[:lng])
-    weather_service.forecast(antipode[:data][:attributes][:lat], antipode[:data][:attributes][:long])
+    anti_lat_long = antipode(lat_long[:lat], lat_long[:lng])
+    forecast = weather_service.forecast(anti_lat_long[:lat], anti_lat_long[:long])
     binding.pry
+    antipode_city = location_service.reverse_geocode(anti_lat_long[:lat], anti_lat_long[:long])
   end
 
   private
+
+  def antipode(lat, long)
+    response = antipode_service.antipode(lat, long)
+    response[:data][:attributes]
+  end
 
   def geocode(location)
     response = location_service.geocode(location)
