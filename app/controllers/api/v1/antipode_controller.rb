@@ -21,7 +21,10 @@ class Api::V1::AntipodeController < ApplicationController
 
   def reverse_geocode(lat, long)
     response = location_service.reverse_geocode(lat, long)
-    response[:results][0][:address_components][1][:long_name]
+    location = response[:results][0][:address_components].select do |address|
+      address.has_value?(["administrative_area_level_1", "political"])
+    end
+    location[0][:long_name]
   end
 
   def forecast(lat, long)
