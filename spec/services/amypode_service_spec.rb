@@ -11,13 +11,12 @@ describe AmypodeService do
     describe '#antipode' do
       it 'returns json with the lat and long for a location\'s antipode' do
         service = AmypodeService.new
-        lat = 39.7392358
-        lng = -104.990251
-        response = service.forecast(lat, lng)
+        lat = 22.3193039
+        lng = 114.1693611
+        response = service.antipode(lat, lng)
 
-        expect(response[:latitude]).to eq(lat)
-        expect(response[:longitude]).to eq(lng)
-        expect(response[:hourly][:data].count).to eq(49)
+        expect(response[:data][:attributes][:lat]).to eq(-22.3193039)
+        expect(response[:data][:attributes][:long]).to eq(-65.8306389)
       end
     end
   end
