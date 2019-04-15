@@ -7,10 +7,10 @@ describe 'User Registration' do
         expect(User.all.count).to eq(0)
         visit '/sign-up'
 
-        fill_in 'email', with: 'whatever@example.com'
-        fill_in 'password', with: 'password'
-        fill_in 'password_confirmation', with: 'password'
-        click_button 'Sign Up'
+        fill_in 'Email', with: 'whatever@example.com'
+        fill_in 'Password', with: 'password'
+        fill_in 'Password confirmation', with: 'password'
+        click_button 'Create User'
 
         expect(current_path).to eq('/')
         expect(User.all.count).to eq(1)
