@@ -5,8 +5,11 @@ class Api::V1::AntipodeController < ApplicationController
     anti_lat_long = antipode(lat_long[:lat], lat_long[:lng])
     forecast = forecast(anti_lat_long[:lat], anti_lat_long[:long])
     antipode_city = reverse_geocode(anti_lat_long[:lat], anti_lat_long[:long])
-    Antipode.new()
-    binding.pry
+    antipode = Antipode.new(antipode_city: antipode_city,
+                            search_location: search_location,
+                            forecast_summary: forecast[:summary],
+                            forecast_temperature: forecast[:temperature])
+    render json: AntipodeSerializer.new(antipode) if antipode.save
   end
 
   private
