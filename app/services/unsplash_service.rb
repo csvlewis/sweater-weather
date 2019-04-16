@@ -10,7 +10,6 @@ class UnsplashService
   end
 
   def conn
-    binding.pry
     Faraday.new(url: 'https://api.unsplash.com/search/photos') do |faraday|
       faraday.headers['Authorization'] = "Bearer #{ENV['UNSPLASH_API_KEY']}"
       faraday.adapter Faraday.default_adapter
