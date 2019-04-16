@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_034037) do
+ActiveRecord::Schema.define(version: 2019_04_15_161652) do
+
+  create_table "antipodes", force: :cascade do |t|
+    t.string "antipode_city"
+    t.string "search_location"
+    t.string "forecast_summary"
+    t.float "forecast_temperature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

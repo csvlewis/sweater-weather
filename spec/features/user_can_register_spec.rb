@@ -12,7 +12,6 @@ describe 'User Registration' do
         fill_in 'Password confirmation', with: 'password'
         click_button 'Create User'
 
-        expect(current_path).to eq('/')
         expect(User.all.count).to eq(1)
         expect(User.first.email).to eq('whatever@example.com')
       end
