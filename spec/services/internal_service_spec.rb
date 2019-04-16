@@ -9,7 +9,7 @@ describe InternalService do
 
   describe 'instance methods' do
     describe '#register' do
-      it 'registers a user with given credentials' do
+      xit 'registers a user with given credentials' do
         service = InternalService.new
         params = {
           email: "whatever@example.com",
