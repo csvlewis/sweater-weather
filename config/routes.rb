@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/sign-up', to: 'users#new'
+  get '/login', to: 'sessions#new'
   resources :users, only: :create
   namespace :api do
     namespace :v1 do
