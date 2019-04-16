@@ -1,4 +1,4 @@
-class Api::V1::ForecastController < ApplicationController
+class Api::V1::ForecastController < Api::V1::BaseController
   def show
     lat_long = geocode(params[:location])
     render json: weather_service.forecast(lat_long[:lat], lat_long[:lng])
