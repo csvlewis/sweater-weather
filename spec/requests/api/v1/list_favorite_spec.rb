@@ -17,6 +17,9 @@ describe 'Favorites API' do
     get '/api/v1/favorites', params: { favorite: body }
 
     expect(response.status).to eq(200)
-    expect(2).to eq(1)
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[0][:location]).to eq(location1.name)
+    expect(parsed[1][:location]).to eq(location2.name)
+    expect(parsed[2][:location]).to eq(location3.name)
   end
 end

@@ -1,12 +1,11 @@
 class Api::V1::FavoritesController < Api::V1::BaseController
 skip_before_action :verify_authenticity_token
   def index
-    binding.pry
     user = User.find_by(api_key: params[:favorite][:api_key])
     locations = user.locations.map do |location|
       {
         location: location.name,
-        current_weather: location.forecast
+        forecast: location.forecast
       }
     end
     render status: 200, json: locations
