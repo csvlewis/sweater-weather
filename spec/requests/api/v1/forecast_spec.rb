@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Forecast API' do
-  it 'can determine the weather forecast for a given location' do
+  it 'returns the weather forecast for a given location' do
     headers = {
       'CONTENT-TYPE' => 'application/json',
       'ACCEPT' => 'application/json'
