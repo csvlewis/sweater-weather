@@ -3,9 +3,9 @@ class Api::V1::SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user.authenticate(params[:session][:password])
       session[:id] = user.id
-      render json: UserSerializer.new(user)
+      render status: 200, json: { api_key: "#{user.api_key}" }
     else
-      raise ActionController::RoutingError.new('Not Found')
+      render status: 404, json: { message: "There was an error with your login" }
     end
   end
 end

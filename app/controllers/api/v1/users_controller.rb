@@ -2,21 +2,17 @@ class Api::V1::UsersController < ApplicationController
 skip_before_action :verify_authenticity_token
   def create
     if confirmed_password
-      if params[:user]
-        user = User.new(user_params)
-      else
-        user = User.new(email: params[:email],
-                        password: params[:password],
-                        password_confirmation: params[:password_confirmation])
-      end
+      user = User.new(email: params[:email],
+                      password: params[:password],
+                      password_confirmation: params[:password_confirmation])
       set_user_api_key(user)
       if user.save
-        render json: UserSerializer.new(user), status: 201
+        render status: 201, json: { api_key: "#{user.api_key}" }
       else
-        raise ActionController::RoutingError.new('Not Found')
+        render status: 404, json: { message: "There was an error with your registration" }
       end
     else
-      raise ActionController::RoutingError.new('Not Found')
+      render status: 404, json: { message: "Your passwords do not match" }
     end
   end
 

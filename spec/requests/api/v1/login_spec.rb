@@ -14,6 +14,6 @@ describe 'Users API' do
     parsed = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq(200)
-    expect(parsed[:data][:attributes][:api_key]).to be_a(String)
+    expect(parsed[:api_key]).to be_a(String)
   end
 end
