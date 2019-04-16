@@ -10,4 +10,19 @@ skip_before_action :verify_authenticity_token
       render status: 404, json: { message: "There was an error with your request"}
     end
   end
+
+  def destroy
+    user = User.find_by(api_key: params[:favorite][:api_key])
+    location = Location.find_by(name: params[:favorite][:location])
+    if user.locations.include?(location)
+      UserLocation.joins(:location)
+                  .where(locations: { name: params[:favorite][:location] })
+                  .first
+                  .destroy
+      render status: 200, json: { message: "You have unfavorited #{params[:favorite][:location]}!"}
+    else
+      render status: 404, json: { message: "There was an error with your request"}
+    end
+
+  end
 end
