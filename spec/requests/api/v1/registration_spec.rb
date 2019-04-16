@@ -17,6 +17,6 @@ describe 'Users API' do
     expect(parsed[:data][:attributes][:api_key]).to be_a(String)
     expect(User.all.count).to eq(1)
     expect(User.first.email).to eq('whatever@example.com')
-    expect(User.first.password).to eq('password')
+    expect(User.first.authenticate('password')).to eq(User.first)
   end
 end

@@ -4,8 +4,10 @@ skip_before_action :verify_authenticity_token
     user = User.find_by(api_key: params[:favorite][:api_key])
     if user
       location = Location.find_or_create_by(name: params[:favorite][:location])
-      user.favorite_locations << location
+      user.locations << location
+      render status: 201
     else
+
     end
   end
 end
