@@ -7,7 +7,7 @@ skip_before_action :verify_authenticity_token
                       password_confirmation: params[:password_confirmation])
       set_user_api_key(user)
       if user.save
-        render status: 201, json: { api_key: "#{user.api_key}" }
+        render status: 201, json: { api_key: user.api_key.to_s }
       else
         render status: 404, json: { message: "There was an error with your registration" }
       end

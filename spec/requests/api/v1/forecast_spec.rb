@@ -9,6 +9,5 @@ describe 'Forecast API' do
     expect(response).to be_successful
     expect(parsed[:latitude]).to eq(39.7392358)
     expect(parsed[:longitude]).to eq(-104.990251)
-    expect(parsed[:hourly][:data].count).to eq(49)
   end
 end
