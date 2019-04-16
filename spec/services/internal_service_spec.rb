@@ -9,10 +9,11 @@ describe InternalService do
 
   describe 'instance methods' do
     describe '#register' do
-      xit 'registers a user with given credentials' do
+      it 'registers a user with given credentials' do
         service = InternalService.new
+        email = SecureRandom.urlsafe_base64
         params = {
-          email: "whatever@example.com",
+          email: email,
           password: "password",
           password_confirmation: "password"
         }
