@@ -12,4 +12,12 @@ class Api::V1::BaseController < ApplicationController
   def favorite_deleted(location)
     { message: "You have unfavorited #{location}" }
   end
+
+  def api_key(user)
+    { api_key: user.api_key }
+  end
+
+  def confirmed_password
+    params[:password] == params[:password_confirmation]
+  end
 end
