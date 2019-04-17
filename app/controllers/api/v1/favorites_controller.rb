@@ -23,7 +23,7 @@ class Api::V1::FavoritesController < Api::V1::BaseController
   def destroy
     user = Finder.new(params[:favorite][:api_key]).find_user_by_api_key
     location = Finder.new(params[:favorite][:location]).find_location_by_name
-    if user.has_location?(location) && user
+    if user.locations.include?(location) && user
       FavoriteManager.new(user, location).delete_favorite
       render status: 200, json: favorite_deleted(params[:favorite][:location])
     else

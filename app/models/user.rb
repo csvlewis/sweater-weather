@@ -7,14 +7,6 @@ class User < ApplicationRecord
   has_many :user_locations
   has_many :locations, through: :user_locations
 
-  def valid_password(password)
-    authenticate(password)
-  end
-
-  def has_location?(location)
-    locations.include?(location)
-  end
-
   def set_user_api_key
     key = SecureRandom.urlsafe_base64
     update(api_key: key)

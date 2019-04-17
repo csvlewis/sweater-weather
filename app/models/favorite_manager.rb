@@ -5,7 +5,7 @@ class FavoriteManager
   end
 
   def create_favorite
-    @user.locations << @location unless @user.has_location?(@location)
+    @user.locations << @location unless @user.locations.include?(@location)
   end
 
   def delete_favorite

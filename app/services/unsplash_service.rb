@@ -1,7 +1,7 @@
 class UnsplashService
   def background(location)
     location = parse(location)
-    get_json("?query=#{location}&page=1&per_page=1")
+    get_json("?query=#{location}")
   end
 
   def get_json(url)
