@@ -9,8 +9,13 @@ class UserCreator
   end
 
   def register_user
-    user = User.new(email: @email, password: @password)
-    user.set_user_api_key
-    user
+    user = Finder.find_user_by_email(@email)
+    if user
+      false
+    else
+      user = User.new(email: @email, password: @password)
+      user.set_user_api_key
+      user
+    end
   end
 end

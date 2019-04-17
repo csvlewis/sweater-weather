@@ -42,7 +42,7 @@ describe 'Users API' do
     body = {
       email: 'whatever@example.com',
       password: 'password',
-      password_confirmation: 'invalid_password'
+      password_confirmation: 'password'
     }
 
     expect(User.all.count).to eq(1)
