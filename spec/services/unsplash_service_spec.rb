@@ -15,6 +15,10 @@ describe UnsplashService do
         response = service.background('denver, co')
 
         expect(response[:results][0][:urls][:raw]).to be_a(String)
+
+        response = service.background('denver')
+
+        expect(response[:results][0][:urls][:raw]).to be_a(String)
       end
     end
   end

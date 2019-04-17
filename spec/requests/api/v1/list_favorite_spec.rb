@@ -15,11 +15,25 @@ describe 'Favorites API' do
     }
 
     get '/api/v1/favorites', params: { favorite: body }
+    parsed = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq(200)
-    parsed = JSON.parse(response.body, symbolize_names: true)
     expect(parsed[0][:location]).to eq(location1.name)
     expect(parsed[1][:location]).to eq(location2.name)
     expect(parsed[2][:location]).to eq(location3.name)
+  end
+
+  it 'returns an error if an invalid api key is given' do
+    api_key = 'jgn983hy48thw9begh98h4539h4'
+    User.create(email: 'email', password: 'password', api_key: api_key)
+    body = {
+      'api_key': 'invalid_key'
+    }
+
+    get '/api/v1/favorites', params: { favorite: body }
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(404)
+    expect(parsed[:message]).to eq('There was an error with your request')
   end
 end
