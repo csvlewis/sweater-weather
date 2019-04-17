@@ -5,7 +5,7 @@ class Api::V1::FavoritesController < Api::V1::BaseController
     if user
       render status: 200, json: FavoritesFacade.new(user.locations).to_json
     else
-      render status: 404, json: { message: "There was an error with your request"}
+      render status: 404, json: { message: 'There was an error with your request' }
     end
   end
 
@@ -13,9 +13,9 @@ class Api::V1::FavoritesController < Api::V1::BaseController
     user = find_user_by_api_key
     if user
       create_and_save_location(user)
-      render status: 201, json: { message: "You have favorited #{params[:favorite][:location]}!"}
+      render status: 201, json: { message: "You have favorited #{params[:favorite][:location]}" }
     else
-      render status: 404, json: { message: "There was an error with your request"}
+      render status: 404, json: { message: 'There was an error with your request' }
     end
   end
 
@@ -23,7 +23,7 @@ class Api::V1::FavoritesController < Api::V1::BaseController
     user = find_user_by_api_key
     if user_has_location? && user
       delete_user_location
-      render status: 200, json: { message: "You have unfavorited #{params[:favorite][:location]}!"}
+      render status: 200, json: { message: "You have unfavorited #{params[:favorite][:location]}"}
     else
       render status: 404, json: { message: "There was an error with your request"}
     end
