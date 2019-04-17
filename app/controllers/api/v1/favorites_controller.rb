@@ -5,7 +5,7 @@ skip_before_action :verify_authenticity_token
     locations = user.locations.map do |location|
       {
         location: location.name,
-        forecast: location.forecast
+        forecast: location_forecast(location)
       }
     end
     render status: 200, json: locations
@@ -39,6 +39,11 @@ skip_before_action :verify_authenticity_token
   end
 
   private
+
+  def location_forecast(location)
+    response = DarkSkyService.new.forecast(location.latitude, location.longitude)
+    ForecastFacade.new(response).to_json
+  end
 
   def geocode(location)
     response = GoogleMapsService.new.geocode(location)
