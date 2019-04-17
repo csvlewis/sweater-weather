@@ -11,8 +11,9 @@ class Api::V1::FavoritesController < Api::V1::BaseController
 
   def create
     user = find_user_by_api_key
+    location = find_or_create_location_by_name
     if user
-      create_and_save_location(user)
+      FavoriteManager.new(user, location).create_favorite
       render status: 201, json: { message: "You have favorited #{params[:favorite][:location]}" }
     else
       render status: 404, json: { message: 'There was an error with your request' }
@@ -21,8 +22,9 @@ class Api::V1::FavoritesController < Api::V1::BaseController
 
   def destroy
     user = find_user_by_api_key
-    if user_has_location? && user
-      delete_user_location
+    location = find_location_by_name
+    if user.has_location?(location) && user
+      FavoriteManager.new(user, location).delete_favorite
       render status: 200, json: { message: "You have unfavorited #{params[:favorite][:location]}"}
     else
       render status: 404, json: { message: "There was an error with your request"}
@@ -31,28 +33,18 @@ class Api::V1::FavoritesController < Api::V1::BaseController
 
   private
 
-  def delete_user_location
-    UserLocation.joins(:location)
-                .where(locations: { name: params[:favorite][:location] })
-                .first
-                .destroy
-  end
-
-  def create_and_save_location(user)
-    lat, long = Geocoder.new(params[:favorite][:location]).lat_long
-    location = Location.find_or_create_by(name: params[:favorite][:location].downcase,
-                               latitude: lat,
-                               longitude: long)
-    user.locations << location unless user_has_location?
-  end
-
   def find_user_by_api_key
     User.find_by(api_key: params[:favorite][:api_key])
   end
 
-  def user_has_location?
-    user = User.find_by(api_key: params[:favorite][:api_key])
-    location = Location.find_by(name: params[:favorite][:location])
-    user.locations.include?(location)
+  def find_location_by_name
+    Location.find_by(name: params[:favorite][:location].downcase)
+  end
+
+  def find_or_create_location_by_name
+    location = Location.find_or_create_by(name: params[:favorite][:location].downcase)
+    lat, long = Geocoder.new(location.name).lat_long
+    location.update(latitude: lat, longitude: long)
+    location
   end
 end

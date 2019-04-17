@@ -4,7 +4,7 @@ describe 'Favorites API' do
   it 'can delete a favorite location for a user' do
     api_key = 'jgn983hy48thw9begh98h4539h4'
     user = User.create(email: 'email', password: 'password', api_key: api_key)
-    location = Location.create(name: 'Denver, CO')
+    location = Location.create(name: 'denver, co')
     user.locations << location
     body = {
       'location': 'Denver, CO',

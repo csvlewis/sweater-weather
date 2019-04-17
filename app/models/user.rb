@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def valid_password(password)
     authenticate(password)
   end
+
+  def has_location?(location)
+    locations.include?(location)
+  end
 end

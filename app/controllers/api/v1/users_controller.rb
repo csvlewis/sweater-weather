@@ -2,11 +2,8 @@ class Api::V1::UsersController < Api::V1::BaseController
 skip_before_action :verify_authenticity_token
   def create
     if confirmed_password
-      user = User.new(email: params[:email],
-                      password: params[:password],
-                      password_confirmation: params[:password_confirmation])
-      set_user_api_key(user)
-      if user.save
+      user = register_user
+      if user
         render status: 201, json: { api_key: user.api_key.to_s }
       else
         render status: 404, json: { message: "There was an error with your registration" }
@@ -18,8 +15,10 @@ skip_before_action :verify_authenticity_token
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+  def register_user
+    user = User.new(email: params[:email], password: params[:password])
+    set_user_api_key(user)
+    user
   end
 
   def set_user_api_key(user)

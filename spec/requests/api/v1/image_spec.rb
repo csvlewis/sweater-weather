@@ -5,6 +5,7 @@ describe 'Background API' do
     get '/api/v1/backgrounds?location=denver,co'
 
     parsed = JSON.parse(response.body, symbolize_names: true)
+
     expect(response.status).to eq(200)
     expect(parsed[:url]).to be_a(String)
   end
