@@ -14,4 +14,9 @@ class User < ApplicationRecord
   def has_location?(location)
     locations.include?(location)
   end
+
+  def set_user_api_key
+    key = SecureRandom.urlsafe_base64
+    update(api_key: key)
+  end
 end
