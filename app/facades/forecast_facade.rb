@@ -1,5 +1,4 @@
 class ForecastFacade
-  attr_reader :locations
   def initialize(data)
     @latitude = data[:latitude]
     @longitude = data[:longitude]
