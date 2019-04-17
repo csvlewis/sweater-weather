@@ -11,8 +11,8 @@ class Api::V1::FavoritesController < Api::V1::BaseController
 
   def create
     user = Finder.new(params[:favorite][:api_key]).find_user_by_api_key
-    location = Finder.new(params[:favorite][:location]).find_or_create_location_by_name
     if user
+      location = Finder.new(params[:favorite][:location]).find_or_create_location_by_name
       FavoriteManager.new(user, location).create_favorite
       render status: 201, json: favorite_created(params[:favorite][:location])
     else
@@ -23,7 +23,7 @@ class Api::V1::FavoritesController < Api::V1::BaseController
   def destroy
     user = Finder.new(params[:favorite][:api_key]).find_user_by_api_key
     location = Finder.new(params[:favorite][:location]).find_location_by_name
-    if user.locations.include?(location) && user
+    if user && user.locations.include?(location)
       FavoriteManager.new(user, location).delete_favorite
       render status: 200, json: favorite_deleted(params[:favorite][:location])
     else

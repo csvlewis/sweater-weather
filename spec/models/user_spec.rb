@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:user_locations) }
   end
 
-  describe 'instnance methods' do
+  describe 'instance methods' do
     describe '#set_user_api_key' do
       it 'sets or updates a random api key for a user' do
         user = User.create(email: 'email', password: 'password')

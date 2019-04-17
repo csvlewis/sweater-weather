@@ -13,8 +13,11 @@ describe 'Favorites API' do
 
     expect(user.locations.count).to eq(1)
     delete '/api/v1/favorites', params: { favorite: body }
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
 
     expect(response.status).to eq(200)
+    expect(parsed[:message]).to eq('You have unfavorited Denver, CO')
     expect(user.locations.count).to eq(0)
   end
 end
