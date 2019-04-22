@@ -50,19 +50,24 @@ A weather forecast for a city can be accessed by sending a GET request to the fo
 
 A background image for a city can be accessed by sending a GET request to the background endpoint with the city as a parameter: ![Background Request](/images/background_request.png?raw=true)
 
-A user account can be created by sending a POST request to the users endpoint with a body containing a JSON hash with the user’s email, password, and password_confirmation:
+A user account can be created by sending a POST request to the users endpoint: ![Register User](/images/register_user_request.png?raw=true)
+ 
+This request should contain a body with a JSON hash with the user’s email, password, and password_confirmation: ![Register User Body](/images/register_user_request_headers.png?raw=true)
 
-The response to this request will be the user’s unique API key, which they will need to save, view, or delete favorite locations:
+The response to this request will be the user’s unique API key, which they will need to save, view, or delete favorite locations: ![Register User Response](/images/register_user_request_response.png?raw=true)
 
-A user who has created an account can access their API key by sending a POST request to the sessions endpoint with a body containing their email and password: 
+A user who has created an account can access their API key by sending a POST request to the sessions endpoint: ![Login User](/images/login_user_request.png?raw=true)
+
+This request should contain a body with their email and password: ![Login User Body](/images/login_user_request_headers.png?raw=true)
+
 The response to this request will be the given user’s API key.
 
-A user can save a favorite location by sending a POST request to the favorites endpoint with a body containing the location and their api key:
+A user can save a favorite location by sending a POST request to the favorites endpoint: ![Create Favorite Request](/images/create_favorite_request.png?raw=true)
 
-A user can delete a favorite location by sending a DELETE request to the favorites endpoint with a body containing the location and their api key:
+This request should contain a body with with the location and the user's api key:,![Create Favorite Request Body](/images/create_favorite_request_headers.png?raw=true)
 
-Finally, a user can get a list of favorite locations and a forecast for each by sending a GET request to the favorites endpoint with a body containing their api key:
+A user can delete a favorite location by sending a DELETE request to the favorites endpoint  a body containing the location and their api key: ![Delete Favorite Request](/images/delete_favorite_request.png?raw=true)
 
-Also, all requests sent should have the headers of ‘Content-Type’ and ‘Accept’, each with a value of ‘application/json’: ![Default Headers](/images/general_headers.png?raw=true)
+Finally, a user can get a list of favorite locations and a forecast for each by sending a GET request to the favorites endpoint with a body containing just their api key: ![List Favorites Request](/images/list_favorites_request.png?raw=true)
 
 
