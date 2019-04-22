@@ -93,8 +93,22 @@ Finally, a user can get a list of favorite locations and a forecast for each by 
 # Testing
 
 Sweater Weather uses RSpec for testing. To run the full test suite, run RSpec from the terminal.
+
         bundle exec rspec
         
 Individual tests can be run by specifying the desired file path and line number. For example,
+
         bundle exec rspec spec/requests/api/v1/create_favorite_spec.rb:21
+        
 will run the item model test that is found in that file on line 21.
+
+# Live Site
+
+- https://morning-cliffs-21879.herokuapp.com
+
+# Built Using
+- Ruby on Rails
+- PostgreSQL
+
+# Created By
+- [Chris Lewis](https://github.com/csvlewis)
