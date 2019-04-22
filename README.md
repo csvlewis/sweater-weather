@@ -42,6 +42,27 @@ Now you can access any of the application’s endpoints through http requests us
 # API Endpoints
 
 All images in this section are screenshots from the Postman app.
-All the urls in the images are accessing the app hosted on Heroku. To test the same endpoints locally, replace ‘https://morning-cliffs-21879.herokuapp.com' in the request url with ‘http://localhost:3000'.
+All the request urls in the images are accessing the app hosted on Heroku. To test the same endpoints locally, replace ‘https://morning-cliffs-21879.herokuapp.com' in the request url with ‘http://localhost:3000'.
 
 Also, all requests sent should have the headers of ‘Content-Type’ and ‘Accept’, each with a value of ‘application/json’: ![Default Headers](/images/general_headers.png?raw=true)
+
+A weather forecast for a city can be accessed by sending a GET request to the forecast endpoint with the city as a parameter: ![Forecast Request](/images/forecast_request.png?raw=true)
+
+A background image for a city can be accessed by sending a GET request to the background endpoint with the city as a parameter: ![Background Request](/images/background_request.png?raw=true)
+
+A user account can be created by sending a POST request to the users endpoint with a body containing a JSON hash with the user’s email, password, and password_confirmation:
+
+The response to this request will be the user’s unique API key, which they will need to save, view, or delete favorite locations:
+
+A user who has created an account can access their API key by sending a POST request to the sessions endpoint with a body containing their email and password: 
+The response to this request will be the given user’s API key.
+
+A user can save a favorite location by sending a POST request to the favorites endpoint with a body containing the location and their api key:
+
+A user can delete a favorite location by sending a DELETE request to the favorites endpoint with a body containing the location and their api key:
+
+Finally, a user can get a list of favorite locations and a forecast for each by sending a GET request to the favorites endpoint with a body containing their api key:
+
+Also, all requests sent should have the headers of ‘Content-Type’ and ‘Accept’, each with a value of ‘application/json’: ![Default Headers](/images/general_headers.png?raw=true)
+
+
