@@ -1,5 +1,3 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 # Sweater Weather
 
 Sweater Weather is an API service that is intended to work as the backend for a weather application. Users can make requests to forecast and background endpoints to get weather forecasts and images for a given location. Visitors can create an account by making a request to a registration endpoint to receive an api key, which can be retrieved later through a login endpoint. 
