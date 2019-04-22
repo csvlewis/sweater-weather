@@ -8,8 +8,7 @@ Once a user has an api key, they can use it to create or delete favorite locatio
 
 - Requires PostgreSQL database
 
-# Getting Started
-
+# Local Setup
 
 Clone the project and enter the directory
 
