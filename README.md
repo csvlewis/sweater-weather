@@ -2,7 +2,9 @@
 
 # Sweater Weather
 
-Sweater Weather is an API service that is intended to work as the backend for a weather application. Users can make requests to forecast and background endpoints to get weather forecasts and images for a given location. Users can create an account by making a request to a registration endpoint to receive an api key, which can be retrieved later through a login endpoint. Once a user has an api key, they can use it to create or delete favorite locations. A user’s favorite locations along with forecast information for each can be retrieved by sending a request to the favorites endpoint with the user’s api key.
+Sweater Weather is an API service that is intended to work as the backend for a weather application. Users can make requests to forecast and background endpoints to get weather forecasts and images for a given location. Visitors can create an account by making a request to a registration endpoint to receive an api key, which can be retrieved later through a login endpoint. 
+
+Once a user has an api key, they can use it to create or delete favorite locations. A user’s favorite locations along with forecast information for each can be retrieved by sending a request to the favorites endpoint with the user’s api key.
 
 # Prerequisites
 
