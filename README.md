@@ -27,7 +27,7 @@ Start the server locally
 
     rails s
 
-Next install Figaro to create a config/application.yml file:
+Next, install Figaro to create a config/application.yml file:
 
     bundle exec figaro install
 
