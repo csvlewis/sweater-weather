@@ -47,14 +47,15 @@ All the request urls in the images are accessing the app hosted on Heroku. To te
 Also, all requests sent should have the headers of ‘Content-Type’ and ‘Accept’, each with a value of ‘application/json’: 
 ![Default Headers](/images/general_headers.png?raw=true)
 
-## City Forecast ##
+### City Forecast ###
 A weather forecast for a city can be accessed by sending a GET request to the forecast endpoint with the city as a parameter: 
 ![Forecast Request](/images/forecast_request.png?raw=true)
 
-## Background Image ##
+### Background Image ###
 A background image for a city can be accessed by sending a GET request to the background endpoint with the city as a parameter: 
 ![Background Request](/images/background_request.png?raw=true)
 
+### User Registration ###
 A user account can be created by sending a POST request to the users endpoint: 
 ![Register User](/images/register_user_request.png?raw=true)
  
@@ -64,6 +65,7 @@ This request should contain a body with a JSON hash with the user’s email, pas
 The response to this request will be the user’s unique API key, which they will need to save, view, or delete favorite locations: 
 ![Register User Response](/images/register_user_request_response.png?raw=true)
 
+### User Login ###
 A user who has created an account can access their API key by sending a POST request to the sessions endpoint: 
 ![Login User](/images/login_user_request.png?raw=true)
 
@@ -72,15 +74,19 @@ This request should contain a body with their email and password:
 
 The response to this request will be the given user’s API key.
 
+### Save Favorite Location ###
 A user can save a favorite location by sending a POST request to the favorites endpoint: 
 ![Create Favorite Request](/images/create_favorite_request.png?raw=true)
 
 This request should contain a body with with the location and the user's api key: 
 ![Create Favorite Request Body](/images/create_favorite_request_headers.png?raw=true)
 
+
+### Delete Favorite Location ###
 A user can delete a favorite location by sending a DELETE request to the favorites endpoint  a body containing the location and their api key: 
 ![Delete Favorite Request](/images/delete_favorite_request.png?raw=true)
 
+### List Favorite Locations and Forecasts ###
 Finally, a user can get a list of favorite locations and a forecast for each by sending a GET request to the favorites endpoint with a body containing just their api key: 
 ![List Favorites Request](/images/list_favorites_request.png?raw=true)
 
