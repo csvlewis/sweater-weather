@@ -47,9 +47,11 @@ All the request urls in the images are accessing the app hosted on Heroku. To te
 Also, all requests sent should have the headers of ‘Content-Type’ and ‘Accept’, each with a value of ‘application/json’: 
 ![Default Headers](/images/general_headers.png?raw=true)
 
+## City Forecast ##
 A weather forecast for a city can be accessed by sending a GET request to the forecast endpoint with the city as a parameter: 
 ![Forecast Request](/images/forecast_request.png?raw=true)
 
+## Background Image ##
 A background image for a city can be accessed by sending a GET request to the background endpoint with the city as a parameter: 
 ![Background Request](/images/background_request.png?raw=true)
 
