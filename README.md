@@ -28,7 +28,7 @@ Next, install Figaro to create a config/application.yml file:
 
     bundle exec figaro install
 
-You will need to get API keys for the [Google Maps API](https://developers.google.com/maps/documentation/geocoding/get-api-key), [Dark Sky API](https://darksky.net/dev/register), and the [Unsplash API](https://unsplash.com/developers). Once you have the keys, add them to your config/application.yml file:
+To run the app locally, you will need to get API keys for the [Google Maps API](https://developers.google.com/maps/documentation/geocoding/get-api-key), [Dark Sky API](https://darksky.net/dev/register), and the [Unsplash API](https://unsplash.com/developers). Once you have the keys, add them to your config/application.yml file:
 
     GOOGLE_MAPS_API_KEY: key_goes_here
     DARK_SKY_API_KEY: key_goes_here
