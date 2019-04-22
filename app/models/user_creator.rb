@@ -9,7 +9,7 @@ class UserCreator
   end
 
   def register_user
-    user = Finder.find_user_by_email(@email)
+    user = User.find_by(email: @email)
     if user
       false
     else
