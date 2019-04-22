@@ -83,7 +83,7 @@ This request should contain a body with with the location and the user's api key
 
 
 ### Delete Favorite Location ###
-A user can delete a favorite location by sending a DELETE request to the favorites endpoint  a body containing the location and their api key: 
+A user can delete a favorite location by sending a DELETE request to the favorites endpoint with a body containing the location and their api key: 
 ![Delete Favorite Request](/images/delete_favorite_request.png?raw=true)
 
 ### List Favorite Locations and Forecasts ###
